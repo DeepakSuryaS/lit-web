@@ -1,10 +1,15 @@
 import { html, css, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
+import { when } from "lit/directives/when.js";
 
 @customElement("my-panel")
 export class MyPanel extends LitElement {
   @property({ type: String })
   title = "WIDGET";
+
+  @property({ type: Boolean })
+  isOpen = false;
+
   static styles = css`
     .container {
       min-width: 20rem;
@@ -32,7 +37,7 @@ export class MyPanel extends LitElement {
           ${this.title}
           <div>😁</div>
         </div>
-        <div class="body"><slot></slot></div>
+        ${when(this.isOpen, () => html`<div class="body"><slot></slot></div>`)}
       </div>
     `;
   }
