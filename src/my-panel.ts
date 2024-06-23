@@ -32,7 +32,7 @@ export class MyPanel extends LitElement {
           ${this.title}
           <div>😁</div>
         </div>
-        <div class="body">CONTENT</div>
+        <div class="body"><slot></slot></div>
       </div>
     `;
   }
